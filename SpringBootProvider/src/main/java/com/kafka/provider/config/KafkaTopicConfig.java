@@ -13,9 +13,11 @@ import java.util.Map;
 @Configuration
 public class KafkaTopicConfig {
 
+
     @Bean
     public NewTopic generateTopic(){
         Map<String, String> configuration = new HashMap<>();
+        
         configuration.put(TopicConfig.CLEANUP_POLICY_CONFIG, TopicConfig.CLEANUP_POLICY_DELETE); //delete (borra mensaje), compact (mantiene el mensaje mas actual)
         configuration.put(TopicConfig.RETENTION_MS_CONFIG, "86400000"); //tiempo de retencion de mensaje, en defecto viene en -1 (significa que no se va a borrar nunca)
         configuration.put(TopicConfig.SEGMENT_BYTES_CONFIG, "1073741824"); //tamano maximo de cada segmento en bytes (en este caso es 1 giga)
